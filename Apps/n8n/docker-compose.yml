@@ -1,0 +1,56 @@
+name: n8n
+services:
+  n8n:
+    environment:
+      TZ: $TZ
+    image: n8nio/n8n:1.16.0
+    deploy:
+      resources:
+        reservations:
+          memory: 320M
+    network_mode: bridge
+    ports:
+      - target: 5678
+        published: "5678"
+        protocol: tcp
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: /opt/appdata/$AppID/.n8n
+        target: /home/node/.n8n
+    x-casaos:
+      envs:
+        - container: TZ
+          description:
+            en_us: Time
+      ports:
+        - container: "5678"
+          description:
+            en_us: web port
+
+      volumes:
+        - container: /home/node/.n8n
+          description:
+            en_us: n8n directory.
+    container_name: n8n
+x-casaos:
+  architectures:
+    - amd64
+    - arm64
+    - arm
+  main: n8n
+  author: YoussofKhawaja
+  category: Utilities
+  description:
+    en_us: Free and source-available fair-code licensed workflow automation tool. Easily automate tasks across different services.
+  developer: n8n
+  icon: https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/N8n/icon.png
+  screenshot_link: []
+  tagline:
+    en_us: Workflow automation tool
+  thumbnail: https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/N8n/thumbnail.png
+  tips: {}
+  title:
+    en_us: n8n
+  index: /
+  port_map: "5678"

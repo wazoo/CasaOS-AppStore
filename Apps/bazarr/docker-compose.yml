@@ -1,0 +1,75 @@
+name: bazarr
+services:
+  bazarr:
+    environment:
+      PGID: "1000"
+      PUID: "1000"
+      TZ: Europe/London
+    image: linuxserver/bazarr:1.4.2
+    deploy:
+      resources:
+        reservations:
+          memory: 64M
+    network_mode: bridge
+    ports:
+      - target: 6767
+        published: "6767"
+        protocol: tcp
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: /opt/media/movies
+        target: /movies
+      - type: bind
+        source: /opt/media/tv
+        target: /tv
+      - type: bind
+        source: /opt/appdata/$AppID/config
+        target: /config
+    x-casaos:
+      envs:
+        - container: TZ
+          description:
+            en_us: Specify a Timezone to use.
+        - container: PUID
+          description:
+            en_us: Run Bazaar as specified uid.
+        - container: PGID
+          description:
+            en_us: Run Bazaar as specified gid.
+      ports:
+        - container: "6767"
+          description:
+            en_us: ""
+
+      volumes:
+        - container: /movies
+          description:
+            en_us: ""
+        - container: /tv
+          description:
+            en_us: ""
+        - container: /config
+          description:
+            en_us: ""
+    container_name: bazarr
+x-casaos:
+  architectures:
+    - amd64
+    - arm
+    - arm64
+  main: bazarr
+  author: CasaOS Team
+  category: Media
+  description:
+    en_us: Bazarr is a companion application to Sonarr and Radarr. It can manage and download subtitles based on your requirements. You define your preferences by TV show or movie and Bazarr takes care of everything for you.
+  developer: Sabnzbd Team
+  icon: https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Bazarr/icon.png
+  screenshot_link: []
+  tagline:
+    en_us: Letter generators for Sonarr and Radarr
+  thumbnail: https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Bazarr/thumbnail.png
+  tips: {}
+  title:
+    en_us: Bazarr
+  port_map: "6767"
