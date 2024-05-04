@@ -1,6 +1,26 @@
 # CasaOS AppStore
 
-This repository is an app store for [CasaOS]() and it has a bunch of apps that I use sometimes with customized settings to make them the same between the sources. Most of them probably work.
+This repository is an app store for [CasaOS](https://www.casaos.io) and it has a bunch of apps that I use sometimes with customized settings to make them the same between the sources. Most of them probably work.
+
+# Common Settings
+
+## Paths
+
+- /opt/appdata - Application Data Storage
+- /opt/userfiles - User file storage (NextCloud data etc)
+- /opt/media - media storage
+
+## Port List
+
+I have used the following port numbers for these applications and tried to stay with the default where there weren't any collisions.
+
+|Port|App|Default|
+|---|---|---|---|
+|80|nginxproxymanager|yes|
+|81|nginxproxymanager|yes|
+|443|nginxproxymanager|yes|
+|5432|Postgres|yes|
+|32400|Plex|yes|
 
 # Sources
 

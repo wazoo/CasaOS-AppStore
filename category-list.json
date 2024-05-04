@@ -1,7 +1,42 @@
 [
   {
+    "name": "Developer",
+    "font": "",
+    "description": ""
+  },
+  {
+    "name": "Downloader",
+    "font": "",
+    "description": ""
+  },
+  {
     "name": "Media",
     "font": "casa-media-outline",
     "description": "Apps for managing a media collection."
+  },
+  {
+    "name": "Monitoring",
+    "font": "",
+    "description": ""
+  },
+  {
+    "name": "Network",
+    "font": "",
+    "description": ""
+  },
+  {
+    "name": "Productivity",
+    "font": "",
+    "description": ""
+  },
+  {
+    "name": "Utilities",
+    "font": "",
+    "description": ""
+  },
+  {
+    "name": "Home Automation",
+    "font": "",
+    "description": ""
   }
 ]
