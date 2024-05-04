@@ -1,0 +1,75 @@
+name: sonarr
+services:
+  sonarr:
+    image: linuxserver/sonarr:4.0.4
+    restart: unless-stopped
+    container_name: sonarr
+    network_mode: bridge
+    environment:
+      PGID: $PGID
+      PUID: $PUID
+      TZ: $TZ
+    ports:
+      - target: 8989
+        published: "8989"
+        protocol: tcp
+    deploy:
+      resources:
+        reservations:
+          memory: "512M"
+    volumes:
+      - type: bind
+        source: /opt/appdata/$AppID/config
+        target: /config
+      - type: bind
+        source: /opt/media/tv
+        target: /tv
+      - type: bind
+        source: /opt/downloads
+        target: /downloads
+    x-casaos:
+      envs:
+        - container: TZ
+          description:
+            en_us: Specify a Timezone to use.
+        - container: PUID
+          description:
+            en_us: Run Sonarr as specified uid.
+        - container: PGID
+          description:
+            en_us: Run Sonarr as specified gid.
+      ports:
+        - container: "8989"
+          description:
+            en_us: WebUI HTTP Port
+
+      volumes:
+        - container: /config
+          description:
+            en_us: Sonarr config directory.
+        - container: /tv
+          description:
+            en_us: Sonarr tv directory.
+        - container: /downloads
+          description:
+            en_us: Sonarr downloads directory.
+x-casaos:
+  architectures:
+    - amd64
+    - arm64
+  main: sonarr
+  category: Media
+  description:
+    en_us: Sonarr is a PVR for Usenet and BitTorrent users. It can monitor multiple RSS feeds for new episodes of your favorite shows and will grab, sort and rename them. It can also be configured to automatically upgrade the quality of files already downloaded when a better quality format becomes available.
+  tagline:
+    en_us: The PVR for Usenet and BitTorrent users
+  tips: {}
+  index: /
+  port_map: "8989"
+  developer: LinuxServer.io
+  author: WisdomSky
+  icon: https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/sonarr-icon.png
+  thumbnail: https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/sonarr-banner.png
+  title:
+    en_us: Sonarr
+  project_url: https://sonarr.tv/
