@@ -67,6 +67,9 @@ services:
         target: /config
       - type: bind
         source: /opt/downloads/manual
+        target: /manual
+      - type: bind
+        source: /opt/userfiles/jdownloader
         target: /output
     container_name: jdownloader2
 x-casaos:

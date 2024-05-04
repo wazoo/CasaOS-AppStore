@@ -5,7 +5,7 @@ services:
       PGID: "1000"
       PUID: "1000"
       TZ: America/Denver
-    image: linuxserver/lidarr:2.25
+    image: linuxserver/lidarr:2.2.5
     deploy:
       resources:
         reservations:
@@ -26,6 +26,9 @@ services:
       - type: bind
         source: /opt/downloads
         target: /downloads
+      - type: bind
+        source: /opt/userfiles/jdownloader
+        target: /jdownloader
     x-casaos:
       envs:
         - container: PUID

@@ -27,6 +27,9 @@ services:
       - type: bind
         source: /opt/downloads
         target: /downloads
+      - type: bind
+        source: /opt/userfiles/jdownloader
+        target: /jdownloader
     x-casaos:
       envs:
         - container: PUID
