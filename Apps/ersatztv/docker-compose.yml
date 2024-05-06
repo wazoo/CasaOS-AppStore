@@ -1,0 +1,43 @@
+
+name: ersatztv
+services:
+  ersatztv:
+    image: jasongdove/ersatztv:latest
+    restart: unless-stopped
+    environment:
+      UID: $PUID
+      GID: $PGID
+    x-casaos:
+      envs: []
+    ports:
+      - target: 8409
+        published: 8409
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: /opt/appdata/$AppID/config
+        target: /root/.local/share/ersatztv
+      - type: bind
+        source: /opt/media
+        target: /opt/media
+        read_only: true
+      - type: tmpfs
+        target: /root/.local/share/etv-transcode
+x-casaos:
+  architectures:
+    - amd64
+    - arm
+    - arm64
+  main: ersatztv
+  description:
+    en_us: ErsatzTV is beta software for configuring and streaming custom live channels using your media library. The software may be unstable and is under active development.
+  tagline:
+    en_us: Custom live channels using your media library
+  developer: ErsatzTV Team
+  author: Megavolt Labs
+  icon: https://raw.githubusercontent.com/SelfhostedPro/selfhosted_templates/master/Images/ytdlm.png
+  thumbnail: https://github.com/kieraneglin/ersatztv/raw/master/priv/static/images/app-form-screenshot.png
+  title:
+    en_us: ersatztv
+  category: Media
+  port_map: '8409'
