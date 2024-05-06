@@ -17,7 +17,7 @@ services:
         source: /opt/appdata/$AppID/config
         target: /config
       - type: bind
-        source: /opt/appdata/$AppID/youtube
+        source: /opt/media/youtube
         target: /downloads
 x-casaos:
   architectures:
