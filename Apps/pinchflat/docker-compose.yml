@@ -1,0 +1,39 @@
+name: pinchflat
+services:
+  pinchflat:
+    image: keglin/pinchflat:latest
+    restart: unless-stopped
+    environment:
+      UID: $PUID
+      GID: $PGID
+    x-casaos:
+      envs: []
+    ports:
+      - target: 8945
+        published: 8945
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: /opt/appdata/$AppID/config
+        target: /config
+      - type: bind
+        source: /opt/appdata/$AppID/youtube
+        target: /downloads
+x-casaos:
+  architectures:
+    - amd64
+    - arm
+    - arm64
+  main: pinchflat
+  description:
+    en_us: Pinchflat is a self-hosted app for downloading YouTube content built using yt-dlp. It's designed to be lightweight, self-contained, and easy to use.
+  tagline:
+    en_us: Your next YouTube media manager
+  developer: ''
+  author: Megavolt Labs
+  icon: https://raw.githubusercontent.com/SelfhostedPro/selfhosted_templates/master/Images/ytdlm.png
+  thumbnail: https://github.com/kieraneglin/pinchflat/raw/master/priv/static/images/app-form-screenshot.png
+  title:
+    en_us: Pinchflat
+  category: Media
+  port_map: '8945'
