@@ -1,12 +1,10 @@
 name: traefik
 services:
-  app:
+  traefik:
     image: traefik:v3.0
     restart: unless-stopped
     container_name: "traefik"
-    command:
-      #- "--log.level=DEBUG"
-      - "--configfile=/etc/traefik/traefik.yml"
+    command: --configfile=/etc/traefik/traefik.yml
     environment:
       PGID: "1000"
       PUID: "1000"
@@ -39,7 +37,7 @@ x-casaos:
     - amd64
     - arm
     - arm64
-  main: app
+  main: traefik
   description:
     en_us: Cloud-Native Networking Stack That Just Works.
   tagline:
