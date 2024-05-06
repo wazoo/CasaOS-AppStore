@@ -1,0 +1,59 @@
+name: maintainerr
+services:
+  maintainerr:
+    environment:
+      PGID: "1000"
+      PUID: "1000"
+      TZ: America/Denver
+    image: ghcr.io/jorenn92/maintainerr:2.0.3
+    container_name: maintainerr
+    network_mode: bridge
+    user: 1000:1000
+    ports:
+      - target: 6246
+        published: "6246"
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: /opt/appdata/$AppID/data
+        target: /opt/data
+    x-casaos:
+      envs:
+        - container: PUID
+          description:
+            en_us: ""
+        - container: PGID
+          description:
+            en_us: ""
+        - container: TZ
+          description:
+            en_us: ""
+      ports:
+        - container: "6246"
+          description:
+            en_us: ""
+          protocol: ""
+      volumes:
+        - container: /config
+          description:
+            en_us: ""
+x-casaos:
+  architectures:
+    - amd64
+    - arm64
+  main: maintainerr
+  author: Megavolt Labs
+  category: Media
+  description:
+    en_us: Maintainerr makes managing your media easy. Looks and smells like Overseerr, does the opposite. Maintenance tool for the Plex ecosystem.
+  developer: Maintainerr Team
+  icon: ''
+  screenshot_link: []
+  tagline:
+    en_us: Maintainerr makes managing your media easy.
+  thumbnail: 
+  tips: {}
+  title:
+    en_us: Maintainerr
+  index: /
+  port_map: "8181"

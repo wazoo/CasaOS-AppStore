@@ -22,6 +22,10 @@ I have used the following port numbers for these applications and tried to stay 
 |5432|Postgres|yes|
 |32400|Plex|yes|
 
+# Usage
+
+If you want to use this for some reason you can add this link to your CasaOS app store: `https://github.com/wazoo/CasaOS-AppStore/archive/refs/heads/main.zip`
+
 # Sources
 
 ## Container Images
