@@ -1,22 +1,26 @@
 name: traefik
 services:
   app:
-    image: traefik:v3.0.0
+    image: traefik:v3.0
     restart: unless-stopped
+    container_name: "traefik"
+    command:
+      #- "--log.level=DEBUG"
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entryPoints.web.address=:80"
     environment:
       PGID: "1000"
       PUID: "1000"
       TZ: America/Denver
-      TRAEFIK_API: false
-      TRAEFIK_API_DASHBOARD: true
-      TRAEFIK_API_INSECURE: false
     ports:
       - target: 80
         published: 80
         protocol: tcp
-      - target: 443
-        published: 443
-        protocol: tcp
+      # - target: 443
+      #   published: 443
+      #   protocol: tcp
       - target: 8080
         published: 8080
         protocol: tcp
