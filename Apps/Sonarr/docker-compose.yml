@@ -10,9 +10,10 @@ services:
       PUID: $PUID
       TZ: $TZ
     labels:
-      - traefik.http.routers.sonarr.rule=Host(`sonarr.${NEBULA_ROOT_DOMAIN}.com`)
-      - traefik.http.routers.blog.tls.certresolver=myresolver
-      - traefik.http.routers.blog.tls.domains[0].main=monitoring.yak-bebop.ts.net
+      - traefik.enable=true
+      - traefik.http.routers.whoami.entrypoints=websecure
+      - traefik.http.routers.sonarr.rule=Host(`sonarr.${NEBULA_ROOT_DOMAIN}`)
+      - traefik.http.routers.sonarr.tls.certresolver=nebula
     ports:
       - target: 8989
         published: "8989"
