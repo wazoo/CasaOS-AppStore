@@ -22,17 +22,8 @@ services:
         protocol: tcp
     volumes:
       - type: bind
-        source: /opt/appdata/$AppID/traefik.toml
-        target: /etc/traefik/traefik.toml
-      - type: bind
-        source: /opt/appdata/$AppID/traefik.yml
-        target: /etc/traefik/traefik.yml
-      - type: bind
-        source: /opt/appdata/$AppID/config.yml
-        target: /etc/traefik/config.yml
-      - type: bind
-        source: /opt/appdata/$AppID/acme.json
-        target: /etc/traefik/acme.json
+        source: /opt/appdata/$AppID/config/
+        target: /etc/traefik/
       - type: bind
         source: /var/run/docker.sock
         target: /var/run/docker.sock
