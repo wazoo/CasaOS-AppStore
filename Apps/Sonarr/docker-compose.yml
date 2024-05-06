@@ -9,10 +9,17 @@ services:
       PGID: $PGID
       PUID: $PUID
       TZ: $TZ
+    labels:
+      - traefik.http.routers.sonarr.rule=Host(`sonarr.${NEBULA_ROOT_DOMAIN}.com`)
+      - traefik.http.routers.blog.tls.certresolver=myresolver
+      - traefik.http.routers.blog.tls.domains[0].main=monitoring.yak-bebop.ts.net
     ports:
       - target: 8989
         published: "8989"
         protocol: tcp
+    env_file:
+      - path: /opt/appdata/config/common.env
+        required: true
     deploy:
       resources:
         reservations:
