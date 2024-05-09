@@ -46,3 +46,22 @@ services:
       - /opt/appdata/$AppID/es/data:/usr/share/elasticsearch/data
     expose:
       - "9200"
+x-casaos:
+  architectures:
+    - amd64
+  main: tubearchivist
+  category: Media
+  description:
+    en_us: Your self hosted YouTube media server
+  tagline:
+    en_us: Your self hosted YouTube media server
+  tips: {}
+  index: /
+  port_map: "8989"
+  developer: Tubearchivist
+  author: Megavolt Labs
+  icon: ''
+  thumbnail: ''
+  title:
+    en_us: Tubearchivist
+  project_url: https://sonarr.tv/

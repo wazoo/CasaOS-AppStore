@@ -85,7 +85,7 @@ x-casaos:
   index: /
   port_map: "8989"
   developer: LinuxServer.io
-  author: WisdomSky
+  author: Megavolt Labs
   icon: https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/sonarr-icon.png
   thumbnail: https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/sonarr-banner.png
   title:
