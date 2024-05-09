@@ -11,7 +11,7 @@ services:
       TZ: $TZ
     labels:
       - traefik.enable=true
-      - traefik.http.routers.whoami.entrypoints=websecure
+      - traefik.http.routers.sonarr.entrypoints=websecure
       - traefik.http.routers.sonarr.rule=Host(`sonarr.${NEBULA_ROOT_DOMAIN}`)
       - traefik.http.routers.sonarr.tls.certresolver=nebula
     ports:

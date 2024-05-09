@@ -3,9 +3,11 @@ services:
   tubearchivist:
     container_name: tubearchivist
     restart: unless-stopped
-    image: bbilly1/tubearchivist
+    image: bbilly1/tubearchivist:v0.4.7
     ports:
-      - 18000:8000
+      - target: 8000
+        published: "18000"
+        protocol: tcp
     volumes:
       - /opt/media/youtube:/youtube
       - /opt/appdata/$AppID/cache:/cache
@@ -22,7 +24,7 @@ services:
       - archivist-es
       - archivist-redis
   archivist-redis:
-    image: redis/redis-stack-server
+    image: redis/redis-stack-server:7.2.0-v10
     container_name: archivist-redis
     restart: unless-stopped
     expose:
@@ -32,7 +34,7 @@ services:
     depends_on:
       - archivist-es
   archivist-es:
-    image: bbilly1/tubearchivist-es
+    image: bbilly1/tubearchivist-es:8.13.2
     container_name: archivist-es
     restart: unless-stopped
     ulimits:
@@ -64,4 +66,4 @@ x-casaos:
   thumbnail: ''
   title:
     en_us: Tubearchivist
-  project_url: https://sonarr.tv/
+  project_url: https://tubearchivist.com
