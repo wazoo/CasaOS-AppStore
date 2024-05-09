@@ -1,0 +1,48 @@
+name: tubearchivist
+services:
+  tubearchivist:
+    container_name: tubearchivist
+    restart: unless-stopped
+    image: bbilly1/tubearchivist
+    ports:
+      - 18000:8000
+    volumes:
+      - /opt/media/youtube:/youtube
+      - /opt/appdata/$AppID/cache:/cache
+    env_file:
+      - path: /opt/appdata/config/tubearchivist.env
+        required: true
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 2m
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    depends_on:
+      - archivist-es
+      - archivist-redis
+  archivist-redis:
+    image: redis/redis-stack-server
+    container_name: archivist-redis
+    restart: unless-stopped
+    expose:
+      - "6379"
+    volumes:
+      - /opt/appdata/$AppID/redis/data:/data
+    depends_on:
+      - archivist-es
+  archivist-es:
+    image: bbilly1/tubearchivist-es
+    container_name: archivist-es
+    restart: unless-stopped
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    env_file:
+      - path: /opt/appdata/config/tubearchivist-es.env
+        required: true
+    volumes:
+      - /opt/appdata/$AppID/es/data:/usr/share/elasticsearch/data
+    expose:
+      - "9200"

@@ -29,6 +29,13 @@ services:
       - type: bind
         source: /opt/appdata/$AppID/config
         target: /config
+      # RandomNinjaAtk/arr-scripts
+      - type: bind
+        source: /opt/appdata/$AppID/custom-services.d
+        target: /custom-services.d
+      - type: bind
+        source: /opt/appdata/$AppID/custom-cont-init.d
+        target: /custom-cont-init.d
       - type: bind
         source: /opt/media/tv
         target: /tv
