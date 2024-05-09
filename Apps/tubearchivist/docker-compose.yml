@@ -3,7 +3,7 @@ services:
   tubearchivist:
     container_name: tubearchivist
     restart: unless-stopped
-    image: bbilly1/tubearchivist:v0.4.7
+    image: bbilly1/tubearchivist:latest
     ports:
       - target: 8000
         published: "18000"
@@ -57,7 +57,7 @@ x-casaos:
     en_us: Your self hosted YouTube media server
   tips: {}
   index: /
-  port_map: "8989"
+  port_map: "18000"
   developer: Tubearchivist
   author: Megavolt Labs
   icon: ''
