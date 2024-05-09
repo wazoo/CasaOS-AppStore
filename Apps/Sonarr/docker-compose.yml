@@ -1,7 +1,7 @@
 name: sonarr
 services:
   sonarr:
-    image: linuxserver/sonarr:4.0.4
+    image: linuxserver/sonarr:latest
     restart: unless-stopped
     container_name: sonarr
     network_mode: bridge
@@ -11,7 +11,7 @@ services:
       TZ: $TZ
     labels:
       - traefik.enable=true
-      - traefik.http.routers.sonarr.entrypoints=websecure
+      - traefik.http.routers.whoami.entrypoints=websecure
       - traefik.http.routers.sonarr.rule=Host(`sonarr.${NEBULA_ROOT_DOMAIN}`)
       - traefik.http.routers.sonarr.tls.certresolver=nebula
     ports:
@@ -19,8 +19,7 @@ services:
         published: "8989"
         protocol: tcp
     env_file:
-      - path: /opt/appdata/config/common.env
-        required: true
+      - /opt/appdata/config/common.env
     deploy:
       resources:
         reservations:

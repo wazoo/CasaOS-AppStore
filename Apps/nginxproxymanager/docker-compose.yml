@@ -1,7 +1,7 @@
 name: nginxproxymanager
 services:
   nginxproxymanager:
-    image: docker.io/jc21/nginx-proxy-manager:2.11.2
+    image: docker.io/jc21/nginx-proxy-manager:latest
     deploy:
       resources:
         reservations:

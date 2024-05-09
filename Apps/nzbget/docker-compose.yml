@@ -7,7 +7,7 @@ services:
       PGID: "1000"
       PUID: "1000"
       TZ: America/Denver
-    image: ghcr.io/nzbgetcom/nzbget:v24.0
+    image: ghcr.io/nzbgetcom/nzbget:latest
     # image: linuxserver/nzbget:21.1.20230119
     deploy:
       resources:

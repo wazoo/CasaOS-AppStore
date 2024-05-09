@@ -5,7 +5,7 @@ services:
       PGID: "1000"
       PUID: "1000"
       TZ: America/Denver
-    image: linuxserver/prowlarr:1.9.4
+    image: linuxserver/prowlarr:latest
     deploy:
       resources:
         reservations:

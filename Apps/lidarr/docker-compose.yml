@@ -5,7 +5,7 @@ services:
       PGID: "1000"
       PUID: "1000"
       TZ: America/Denver
-    image: linuxserver/lidarr:2.2.5
+    image: linuxserver/lidarr:latest
     deploy:
       resources:
         reservations:

@@ -5,7 +5,7 @@ services:
       PGID: "1000"
       PUID: "1000"
       TZ: America/Denver
-    image: ghcr.io/jorenn92/maintainerr:2.0.3
+    image: ghcr.io/jorenn92/maintainerr:latest
     container_name: maintainerr
     network_mode: bridge
     user: 1000:1000
