@@ -35,9 +35,9 @@ x-casaos:
     en_us: Custom live channels using your media library
   developer: ErsatzTV Team
   author: Megavolt Labs
-  icon: https://raw.githubusercontent.com/SelfhostedPro/selfhosted_templates/master/Images/ytdlm.png
-  thumbnail: https://github.com/kieraneglin/ersatztv/raw/master/priv/static/images/app-form-screenshot.png
+  icon: ''
+  thumbnail: ''
   title:
-    en_us: ersatztv
+    en_us: ErsatzTV
   category: Media
   port_map: '8409'

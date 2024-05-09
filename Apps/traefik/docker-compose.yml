@@ -20,10 +20,8 @@ services:
         published: 8080
         protocol: tcp
     env_file:
-      - path: /opt/appdata/config/common.env
-        required: true
-      - path: /opt/appdata/traefik/nebula.env
-        required: true
+      - /opt/appdata/config/common.env
+      - /opt/appdata/traefik/nebula.env
     volumes:
       - type: bind
         source: /opt/appdata/$AppID/config/
